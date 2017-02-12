@@ -69,7 +69,7 @@ namespace Zver {
                 for ($concurrent = 0; $concurrent < $this->getMaximumConcurrents(); $concurrent++) {
                     $pid = pcntl_fork();
                     if ($pid == -1) {
-                        throw new \Exception("Can't fork");
+                        throw new \Exception("Can't fork process");
                     }
                     if ($pid == 0) {
                         break;
