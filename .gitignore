@@ -1,0 +1,13 @@
+/.idea/
+/.idea/*
+/.idea_modules/
+/node_modules/
+/nbproject/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/nbactions.xml
+/vendor/
+/composer.lock
+/coverage

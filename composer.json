@@ -1,0 +1,26 @@
+{
+  "name": "zver/parallel-foreach",
+  "description": "parallel foreach loop execution (if possible)",
+  "minimum-stability": "stable",
+  "config": {
+    "optimize-autoloader": true
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    },
+    "files": [
+      "src/Functions.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "": "tests/"
+    }
+  },
+  "require": {
+    "zver/common": "^2.1"
+  },
+  "require-dev": {
+  }
+}
