@@ -6,7 +6,7 @@ use Zver\Parallel;
 class ParallelForEachTest extends PHPUnit\Framework\TestCase
 {
 
-    use \Zver\Package\Test;
+    use \Zver\Package\Helper;
 
     public static function setUpBeforeClass()
     {
@@ -52,7 +52,7 @@ class ParallelForEachTest extends PHPUnit\Framework\TestCase
     public function clearTestFiles()
     {
         for ($i = 1; $i <= 4; $i++) {
-            file_put_contents(Common::getPackageTestFilePath('test' . $i . '.txt'), '');
+            file_put_contents(static::getPackagePath('/tests/files/test' . $i . '.txt'), '');
         }
     }
 
@@ -68,7 +68,7 @@ class ParallelForEachTest extends PHPUnit\Framework\TestCase
          * native foreach
          */
         foreach ($arguments as $argument) {
-            file_put_contents(Common::getPackageTestFilePath('test1.txt'), $argument . "\n", FILE_APPEND);
+            file_put_contents(static::getPackagePath('/tests/files/test1.txt'), $argument . "\n", FILE_APPEND);
         }
 
         /**
@@ -79,10 +79,10 @@ class ParallelForEachTest extends PHPUnit\Framework\TestCase
                     ->setMaximumConcurrents($i)
                     ->setArguments($arguments)
                     ->setCallback(function ($argument) use ($i) {
-                        file_put_contents(Common::getPackageTestFilePath('test' . $i . '.txt'), $argument . "\n", FILE_APPEND);
+                        file_put_contents(static::getPackagePath('/tests/files/test' . $i . '.txt'), $argument . "\n", FILE_APPEND);
                     })
                     ->run();
-            $currentResult = explode("\n", trim(file_get_contents(Common::getPackageTestFilePath('test' . $i . '.txt'))));
+            $currentResult = explode("\n", trim(file_get_contents(static::getPackagePath('/tests/files/test' . $i . '.txt'))));
             sort($currentResult);
             $results[] = $currentResult;
         }

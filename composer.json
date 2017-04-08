@@ -19,7 +19,7 @@
     }
   },
   "require": {
-    "zver/common": "^2.1"
+    "zver/common": "^3"
   },
   "require-dev": {
   }
